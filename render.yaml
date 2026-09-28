@@ -1,0 +1,45 @@
+services:
+  # Backend API Web Service
+  - type: web
+    name: teenspend-backend
+    env: node
+    rootDir: backend
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 5000
+      - key: JWT_SECRET
+        generateValue: true
+      - key: CORS_ORIGIN
+        value: "*"
+      - key: SUPABASE_URL
+        value: https://ldrqeggmglcubydmwuyj.supabase.co
+      - key: SUPABASE_ANON_KEY
+        value: sb_publishable_YxA5YfYes-U6_oZ4GLnGFQ_Ly7V-i3m
+      - key: SUPABASE_SERVICE_ROLE_KEY
+        sync: false
+
+  # Frontend Web Service
+  - type: web
+    name: teenspend-frontend
+    env: static
+    rootDir: frontend
+    buildCommand: npm install && npm run build
+    staticPublishPath: ./dist
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
+    envVars:
+      - key: VITE_API_URL
+        fromService:
+          type: web
+          name: teenspend-backend
+          property: host
+      - key: VITE_SUPABASE_URL
+        value: https://ldrqeggmglcubydmwuyj.supabase.co
+      - key: VITE_SUPABASE_ANON_KEY
+        value: sb_publishable_YxA5YfYes-U6_oZ4GLnGFQ_Ly7V-i3m

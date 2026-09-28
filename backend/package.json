@@ -1,0 +1,36 @@
+{
+  "name": "teenspend-backend",
+  "version": "1.0.0",
+  "description": "TeenSpend Teenager Expense Tracker - REST API Backend",
+  "main": "src/server.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node src/server.js",
+    "test": "node --test tests/**/*.test.js"
+  },
+  "keywords": [
+    "expense-tracker",
+    "teenager",
+    "finance",
+    "express",
+    "supabase",
+    "mvc"
+  ],
+  "author": "TeenSpend Team",
+  "license": "MIT",
+  "dependencies": {
+    "@supabase/supabase-js": "^2.49.1",
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "express-rate-limit": "^7.5.0",
+    "helmet": "^8.0.0",
+    "jsonwebtoken": "^9.0.2",
+    "uuid": "^11.1.0"
+  },
+  "devDependencies": {
+    "supertest": "^7.0.0"
+  }
+}
